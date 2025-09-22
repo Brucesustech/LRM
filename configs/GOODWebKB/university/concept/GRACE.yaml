@@ -1,0 +1,30 @@
+includes:
+  - base.yaml
+model:
+  model_name: GRACE
+  tau: 0.5 #0.05
+  num_clusters: 100
+  prototypes_lr: 1e-7
+  prototypes_iters: 10
+  cmi_coefficient: 0.5
+  dropout_rate: 0
+  use_bn: True
+  last_activation: True
+  # w/ BN, last relu used
+  # ad_aug on two views
+ood:
+  ood_alg: GRACE
+  ood_param: -1.
+train:
+  max_epoch: 100 #500
+  lr: 1e-2
+  mile_stones: [150]
+  linear_head_epochs: 50 #100
+  linear_head_lr: 1e-1 #1e-2
+  eval_step: 10
+aug:
+  mask_feat1: 0.5
+  mask_feat2: 0.5
+  mask_edge1: 0.5
+  mask_edge2: 0.5
+  major_class_ratio: 0.2
